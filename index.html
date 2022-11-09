@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Medicine Price Calculater</title>
+    <link rel="icon" href="https://scontent.fmaa1-3.fna.fbcdn.net/v/t1.6435-9/47430866_719532728422683_547174323794739200_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=174925&_nc_ohc=ImBEQDVPpX4AX-7M1ga&_nc_ht=scontent.fmaa1-3.fna&oh=00_AT-B3XVVYhpFJzM44ZAn1NMoGWl43XUFQ0nYCR8NZFnTXg&oe=62E0C87A" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
   <style> 
@@ -17,31 +20,65 @@
     .font{
         font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     }
+    h1 { color: #111; 
+        font-family: 'Open Sans Condensed', sans-serif; 
+        font-size: 60x; 
+        font-weight: 700;
+         line-height: 64px; 
+          padding: 20px 30px; 
+          text-transform: uppercase; }
+    
   </style>
 
 <body>
-    <div class="font">
-        <p>Medicine Quantity</p>
-        <input type="text" id="inp-medq">
+    <div class="container">
+        <div class="row">
+            <div class="col-md text-center">
+    <div class="Body ">
+    <div class="font ">
+        <h1 class="text-center ">Medicine Price Calculator </h1>
+        <p class="mt-5">Medicine Quantity</p>
+        <input type="text" id="inp-medq"  onkeypress="handle(event)">
         <button onclick="btnDisplay()"> Check</button>
         <button onclick="resetInp()">Reset</button>
     </div>
 
-   <h4 class="font">Final Price :</h4>
-   <b id="result" class="font"></b>
+   <h4 class="font flex">Final Price :</h4>
+   <b id="price" class="font flex"></b>
+
+   <h4 class="font">For Days:</h4>
+   <b id="day" class="font"></b>
+   
+    </div>
+     </div>
+      </div>
     
 </body>
 
 <script>
 
  function btnDisplay(){
-
-    const price=document.getElementById("inp-medq").value
- const lastPrice=price*12.872;
- document.getElementById("result").innerHTML=lastPrice
-
- console.log(lastPrice)
+    const value=document.getElementById("inp-medq").value
+    const lastPrice=value*12.872;
+    document.getElementById("price").innerHTML=lastPrice.toFixed(1)
+    console.log(lastPrice)
+    const days=value/2;
+    document.getElementById("day").innerHTML=days.toFixed(1)
+    console.log(days.toFixed(1))
  } 
+
+ function handle(e){
+    const value=document.getElementById("inp-medq").value
+    var key=e.keyCode || e.which;
+      if (key==13){
+    const lastPrice=value*12.872;
+    document.getElementById("price").innerHTML=lastPrice.toFixed(1)
+    console.log(lastPrice.toFixed(1))
+    const days=value/2;
+    document.getElementById("day").innerHTML=days.toFixed(1)
+    console.log(days.toFixed(1))
+   }
+    }
    
   function resetInp(){
     document.getElementById("inp-medq").value=""
